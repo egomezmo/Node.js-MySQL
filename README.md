@@ -18,6 +18,7 @@ However, if the store does have enough of the product, you should fulfill the cu
 
 ![imagen2](/images/sufficient_quantity.png)
 
+
 This update the SQL database to reflect the remaining quantity.
 It shows the customer the total cost of their purchase in an "Invoice".
 
