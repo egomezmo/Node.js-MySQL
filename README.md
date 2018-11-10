@@ -30,3 +30,7 @@ List a set of menu options:
 1. View Low Inventory.  It should list all items with an inventory count lower than five.
 1. Add to Inventory. It should display a prompt that will let the manager "add more" of any item currently in the store.
 1. Add New Product. It should allow the manager to add a completely new product to the store.
+
+
+#MY PORTFOLIO:
+![imagen2](/images/portfolio.png)
