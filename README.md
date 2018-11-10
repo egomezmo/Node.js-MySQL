@@ -33,4 +33,4 @@ List a set of menu options:
 
 
 #MY PORTFOLIO:
-![imagen2](/images/portfolio.png)
+![imagen2](/images/Portfolio.png)
