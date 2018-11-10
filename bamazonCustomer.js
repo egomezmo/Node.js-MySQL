@@ -30,11 +30,9 @@ function queryAlldata() {               // mostrar todos los datos de la base
       console.log(res[i].item_id + " | " + pshort + " | " + res[i].department_name + " | " + res[i].price + " | " + res[i].stock_quantity);
     }
     console.log("-----------------------------------\n");
-
+    takeOrder();
   });
-}
-
-takeOrder();
+};
 
 function takeOrder() {
   inquirer.prompt([
@@ -73,12 +71,13 @@ function takeOrder() {
 
       if (f > e) {
         console.log("-----------------------------------\n");
-        console.log("You ask for: " + f + " units");
+        console.log("You asked for: " + f + " units");
         console.log("Insufficient quantity!".red.bold);
         console.log("Avalaible units: " + e);
         console.log("Product: " + cc);
         console.log("-----------------------------------\n");
-        // aqui me gustaria regresar al inquerer
+        connection.end(); // aqui me gustaria regresar al inquerer
+        
       } else {
         console.log("-----------------------------------\n");
         console.log("INVOICE".red);

@@ -15,8 +15,11 @@ If not, the app should log a phrase like Insufficient quantity!, and then preven
 
 * Equal or less units order by customers, place the sales*
 However, if the store does have enough of the product, you should fulfill the customer's order.
+
+![imagen2](/images/sufficient_quantity.png)
+
 This update the SQL database to reflect the remaining quantity.
-It shows the customer the total cost of their purchase.
+It shows the customer the total cost of their purchase in an "Invoice".
 
 
 **bamazonManager.js** - Manager View.
