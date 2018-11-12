@@ -32,8 +32,19 @@ List a set of menu options:
 1. Add New Product. It should allow the manager to add a completely new product to the store.
 
 
+**bamazonSupervisor.js** Supervisor view
+This application will list a set of menu options
+1. View Product Sales by Department. When a supervisor selects View Product Sales by Department, the app should display a summarized table. The total_profit column should be calculated on the fly using the difference between over_head_costs and product_sales. total_profit should not be stored in any database. 
+1. Create New Department. This option is to create a new departament.
+
+![imagen3](/images/SupervisorView.png)
+
+![imagen4](/images/Deptos01.png)
+
+![imagen5](/images/Deptos02.png)
+
 #MY PORTFOLIO:
-![imagen2](/images/Portfolio.png)
+![imagen6](/images/Portfolio.png)
 
 link:
 https://egomezmo.github.io/Portfolio-GOME/

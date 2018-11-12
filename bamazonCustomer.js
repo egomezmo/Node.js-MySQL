@@ -61,13 +61,15 @@ function takeOrder() {
   ]).then(function (response) {
     connection.query("SELECT * FROM products", function (err, res) {
       var aa = response.idProduct;
-      var c = res[response.idProduct - 1].product_name;  // nombre del producto escogido
+      var c = res[response.idProduct - 1].product_name;         // nombre del producto escogido
       var cc = c.slice(0, 58) + "...";
-      var d = res[response.idProduct - 1].price;          // precio del producto escogido
-      var e = res[response.idProduct - 1].stock_quantity; // cantidad en existencia
-      var f = response.quantity;                          // cantidad de piezas escogidas
-      var g = f * d;                                     // monto total de la compra
-      var h = e - f;                                      // rest los productos vendidos; 
+      var d = res[response.idProduct - 1].price;                // precio del producto escogido
+      var e = res[response.idProduct - 1].stock_quantity;       // cantidad en existencia
+      var zSales = res[response.idProduct - 1].product_sales;   // accumulate amount of sales in money
+      var f = response.quantity;                                // cantidad de piezas escogidas
+      var tSale = f * d;                                            // monto total de la compra
+      var totalSale = tSale + zSales;
+      var h = e - f;                                            // rest los productos vendidos; 
 
       if (f > e) {
         console.log("-----------------------------------\n");
@@ -82,7 +84,7 @@ function takeOrder() {
         console.log("-----------------------------------\n");
         console.log("INVOICE".red);
         console.log(("ITEM                                                           | QUANTITY    | PRICE  | TOTAL AMOUNT").blue.bold);
-        console.log(cc + "    " + f + "             " + d + "    " + g);
+        console.log(cc + "    " + f + "             " + d + "    " + tSale);
         console.log("-----------------------------------\n");
 
         updateProduct();
@@ -90,16 +92,22 @@ function takeOrder() {
 
           console.log("Updating product quantities...\n");
 
-          var sql = "UPDATE products SET stock_quantity = " + "'" + h + "'" + " WHERE item_id = " + "'" + aa + "'" + ";";
+          var sql = "UPDATE products SET stock_quantity = " + "'" + h + "'" + " WHERE item_id = " + "'" + aa + "'" + ";";       // change in quantity sales products
+          var sql2 = "UPDATE products SET product_sales = " + "'" + totalSale + "'" + " WHERE item_id = " + "'" + aa + "'" + ";";  // chnage in total amount of sales
+
           console.log(sql);
 
           connection.query(sql, function (err, result) {
-
-            //console.log(result.affectedRows + " record(s) updated");
             console.log(("Products updated! " + "to " + h).red);
             console.log("-----------------------------------\n");
+            
+          });
+
+          connection.query(sql2, function (err, result) {
             connection.end();
           });
+
+
         }     // ends function update
 
 
